@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.fruithub.screens.Home_Screen
 import com.example.fruithub.screens.SplashScreen
 import com.example.fruithub.screens.Wellcome_Screen
 import com.example.fruithub.ui.theme.FruitHubTheme
@@ -26,7 +27,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            FruitAppNavigation()
+            Home_Screen()
+            //FruitAppNavigation()
         }
     }
 }

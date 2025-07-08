@@ -80,9 +80,6 @@ fun Wellcome_Screen()
                Spacer(modifier = Modifier.height(26.dp))
 
                Button(onClick = {
-
-
-
                }, modifier = Modifier.fillMaxWidth()
                    .height(56.dp),
                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF8C42)),
