@@ -16,7 +16,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.fruithub.screens.Home_Screen
+import com.example.fruithub.screens.RecomendedComboCard
 import com.example.fruithub.screens.SplashScreen
 import com.example.fruithub.screens.Wellcome_Screen
 import com.example.fruithub.ui.theme.FruitHubTheme
@@ -27,23 +31,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Home_Screen()
-            //FruitAppNavigation()
+            AppNavigation()
         }
     }
 }
 
 @Composable
-fun FruitAppNavigation() {
-    var showSplashScreen by remember { mutableStateOf(true) }
-    LaunchedEffect(key1 = true) {
-        delay(2000L)
-        showSplashScreen = false
-    }
+fun AppNavigation() {
+    val navController = rememberNavController()
 
-    if (showSplashScreen) {
-        SplashScreen()
-    } else {
-        Wellcome_Screen()
+    NavHost(navController = navController, startDestination = "splash") {
+        composable("splash") { SplashScreen(navController) }
+        composable("welcome") { Wellcome_Screen(navController) }
+        composable("home") { Home_Screen() }
     }
 }
+

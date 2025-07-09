@@ -18,6 +18,10 @@ import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -29,10 +33,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.fruithub.R
 import androidx.compose.ui.text.style.TextAlign
+import androidx.navigation.NavController
 
 @Composable
-fun Wellcome_Screen()
+fun Wellcome_Screen(navController: NavController)
 {
+
    Column (modifier = Modifier.fillMaxSize().background(color = Color.White))
    {
        Box(modifier = Modifier.fillMaxWidth()
@@ -79,17 +85,29 @@ fun Wellcome_Screen()
            )
                Spacer(modifier = Modifier.height(26.dp))
 
-               Button(onClick = {
-               }, modifier = Modifier.fillMaxWidth()
-                   .height(56.dp),
+               Button(
+                   onClick = {
+                       navController.navigate("home") {
+                           popUpTo("welcome") { inclusive = true }
+                       }
+                   },
+                   modifier = Modifier
+                       .fillMaxWidth()
+                       .height(56.dp),
                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF8C42)),
-                   shape = RoundedCornerShape(16.dp))
+                   shape = RoundedCornerShape(16.dp)
+               ) {
+                   Text(
+                       text = "Let's Continue",
+                       fontSize = 16.sp,
+                       fontWeight = FontWeight.Medium,
+                       color = Color.White
+                   )
+               }
 
-               { Text("Lets Continue",
-                   fontSize = 16.sp,
-                   fontWeight = FontWeight.Medium,
-                   color = Color.White) }
+
            }
            }
        }
+
    }
