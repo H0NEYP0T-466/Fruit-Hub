@@ -87,9 +87,11 @@ fun Wellcome_Screen(navController: NavController)
 
                Button(
                    onClick = {
-                       navController.navigate("home") {
+                       navController.navigate("Name")
+                       {
                            popUpTo("welcome") { inclusive = true }
                        }
+
                    },
                    modifier = Modifier
                        .fillMaxWidth()

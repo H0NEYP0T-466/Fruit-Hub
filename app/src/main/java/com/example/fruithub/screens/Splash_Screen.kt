@@ -22,9 +22,11 @@ fun SplashScreen(navController: NavController)
 {
     LaunchedEffect(Unit) {
         delay(2000)
-        navController.navigate("welcome") {
-            popUpTo("splash") { inclusive = true }
+        navController.navigate("welcome")
+        {
+            popUpTo("splash") {inclusive = true}
         }
+
     }
 
     Column (modifier = Modifier.fillMaxSize().background(color = Color.White)
